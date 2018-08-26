@@ -22,9 +22,9 @@ namespace PrismHandsOn.ViewModels
     public Command<ColorInfo> ItemSelectedCommand =>
     new Command<ColorInfo>(colorInfo =>
     {
-      var parameter = new NavigationParameters();
-      parameter.Add("colorName", colorInfo.Name);
-      _navigationService.NavigateAsync(nameof(SelectedItemPage), parameter);
+      _navigationService.NavigateAsync(
+        $"{nameof(SelectedItemPage)}?colorName={colorInfo.Name}"
+      );
     });
 
     public ColorsPageViewModel(INavigationService navigationService)
